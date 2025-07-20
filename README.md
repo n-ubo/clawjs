@@ -43,7 +43,7 @@ this way you can narrow down quickly which element you want to interact with. On
 
 i have not yet found a way to optimally avoid keyboard keys the DOM is already using, for now you can change your initialize settings on the bottom of claw.js
 
-example:
+example initialize settings:
 
 ```js
 const claw = new ClawOverlay({
@@ -52,5 +52,37 @@ const claw = new ClawOverlay({
     toggleKeys: ['SHIFT', 'ALT'] // Press SHIFT + ALT to toggle overlays
 });
 ```
+
+Available keys:
+QWERTYUIOPASDFGHJKLZXCVBNM1234567890
+
+Available modifiers:
+SHIFT, ALT, CONTROL and META (windows key)
+
+you can also use multiple or less toggle keys in order to trigger the overlay
+
+```js
+    toggleKeys: ['F', 'G', 'H'] // Press F + G + H to toggle overlays
+```
+
+or
+
+```js
+    toggleKeys: ['F']  // Press just F to toggle overlays
+```
+
+want to use even less keys when navigating through the overlay?
+
+try:
+
+```js
+const claw = new ClawOverlay({
+    keys: "ASD".split(''), // Available keys for overlay selection
+    refreshTimeout: 500, // Milliseconds between overlay refreshes
+    toggleKeys: ['SHIFT', 'ALT'] // Press SHIFT + ALT to toggle overlays
+});
+```
+
+this way there will only be boxes labeled with A, S and D. Allowing you to narrow down the element you want to select by using only these 3 keys, get creative with it.
 
 

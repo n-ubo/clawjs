@@ -1,5 +1,5 @@
-// author: @nuboctane
-// version: 1.0
+// author: @n-ubo
+// version: 2.0
 // license: None
 
 class ClawOverlay {
@@ -46,6 +46,40 @@ class ClawOverlay {
         document.addEventListener("click", () => this._debouncedRefresh(this.timeout));
     }
 
+    _renderSubset(elements) {
+        this._removeOverlays();
+        this.keyMap.clear();
+
+        for (let i = 0; i < elements.length; i++) {
+            const el = elements[i];
+            const key = this.defaultKeys[i % this.defaultKeys.length];
+
+            if (!this.keyMap.has(key)) {
+                this.keyMap.set(key, []);
+            }
+            this.keyMap.get(key).push(el);
+
+            const rect = el.getBoundingClientRect();
+            const label = document.createElement("div");
+            label.className = "claw-overlay";
+            label.setAttribute("data-claw-key", key);
+            label.style.left = `${rect.left + window.scrollX}px`;
+            label.style.top = `${rect.top + window.scrollY}px`;
+            label.style.width = `${rect.width}px`;
+            label.style.height = `${rect.height}px`;
+
+            const text = document.createElement("div");
+            text.className = "claw-label";
+            text.textContent = key;
+            text.style.top = "2px";
+            text.style.left = "2px";
+
+            label.appendChild(text);
+            document.body.appendChild(label);
+        }
+    }
+
+
     _handleKeyDown(e) {
         const key = e.key.toUpperCase();
         this.heldKeys.add(key);
@@ -60,15 +94,22 @@ class ClawOverlay {
 
         if (!this.visible) return;
 
-        const element = this.keyMap.get(key);
-        if (element) {
+        const targets = this.keyMap.get(key);
+        if (targets && targets.length > 0) {
             e.preventDefault();
-            element.focus();
-            element.click();
-            if (!(element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement)) {
-                setTimeout(() => this._refresh(), this.timeout);
+
+            if (targets.length === 1) {
+                const el = targets[0];
+                el.focus();
+                el.click();
+
+                if (!(el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement)) {
+                    setTimeout(() => this._refresh(), this.timeout);
+                } else {
+                    this.hide();
+                }
             } else {
-                this.hide();
+                this._renderSubset(targets);
             }
         }
     }
@@ -87,7 +128,6 @@ class ClawOverlay {
         if (combo.includes("META") && !e.metaKey) return false;
 
         const nonModifierKeys = combo.filter(k => !["SHIFT", "ALT", "CONTROL", "META"].includes(k));
-
         return nonModifierKeys.every(key => keySet.has(key));
     }
 
@@ -140,23 +180,24 @@ class ClawOverlay {
         });
     }
 
-
     _generateOverlays() {
         const interactiveTags = 'button, input:not([type="hidden"]), textarea, select, a[href]';
         const elements = Array.from(document.querySelectorAll(interactiveTags)).filter(el => this._isVisible(el));
 
-        let usedKeys = new Set();
-
-        for (let i = 0; i < elements.length && i < this.defaultKeys.length; i++) {
+        this.keyMap.clear();
+        for (let i = 0; i < elements.length; i++) {
             const el = elements[i];
-            const key = this.defaultKeys[i];
-            usedKeys.add(key);
+            const key = this.defaultKeys[i % this.defaultKeys.length];
 
-            this.keyMap.set(key, el);
+            if (!this.keyMap.has(key)) {
+                this.keyMap.set(key, []);
+            }
+            this.keyMap.get(key).push(el);
 
             const rect = el.getBoundingClientRect();
             const label = document.createElement("div");
             label.className = "claw-overlay";
+            label.setAttribute("data-claw-key", key);
             label.style.left = `${rect.left + window.scrollX}px`;
             label.style.top = `${rect.top + window.scrollY}px`;
             label.style.width = `${rect.width}px`;
@@ -171,6 +212,14 @@ class ClawOverlay {
             label.appendChild(text);
             document.body.appendChild(label);
         }
+    }
+
+    _showOnlyKeyOverlays(pressedKey) {
+        const overlays = document.querySelectorAll(".claw-overlay");
+        overlays.forEach(o => {
+            const key = o.getAttribute("data-claw-key");
+            o.style.display = key === pressedKey ? "block" : "none";
+        });
     }
 
     _removeOverlays() {
@@ -206,9 +255,10 @@ class ClawOverlay {
     }
 }
 
+
 // Initialize
 const claw = new ClawOverlay({
-    keys: "QWERTYUIOPASDFGHJKLZXCVBNM".split(''), // available keys to use when rendering boxes
-    refreshTimeout: 500,
-    toggleKeys: ['SHIFT', 'ALT'] // press SHIFT + ALT to toggle
+    keys: "QWERTYUIOPASDFGHJKLZXCVBNM".split(''), // Available keys for overlay selection
+    refreshTimeout: 500, // Milliseconds between overlay refreshes
+    toggleKeys: ['SHIFT', 'ALT'] // Press SHIFT + ALT to toggle overlays
 });
