@@ -1,5 +1,5 @@
 <h1>clawjs</h1>
-
+VIM-like browser extension.
 Inspired by [Tridactyl](https://github.com/tridactyl/tridactyl/), but actually works in every browser you throw it at.
 
 ![image](https://github.com/Nuboctane/clawjs/assets/72999487/1250d71e-c176-4a8b-b76d-515f95b7801a)
@@ -88,4 +88,4 @@ this way there will only be boxes labeled with A, S and D. Allowing you to narro
 
 <h2>TIPS</h2>
 
-When using tools [Code Injector](https://addons.mozilla.org/en-US/firefox/addon/codeinjector/) to run my code, you could use the same code with different initialization settings for certain websites you usually visit. This way you can better shape your VIM like experience while browsing on any website.
+When using tools [Code Injector](https://addons.mozilla.org/en-US/firefox/addon/codeinjector/) to run my code, you could use the same code with different initialization settings for certain websites you usually visit. This way you can better shape your VIM-like experience while browsing on any website.
