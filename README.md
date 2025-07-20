@@ -85,4 +85,6 @@ const claw = new ClawOverlay({
 
 this way there will only be boxes labeled with A, S and D. Allowing you to narrow down the element you want to select by using only these 3 keys, get creative with it.
 
+<h2>TIPS</h2>
 
+When using tools [Code Injector](https://addons.mozilla.org/en-US/firefox/addon/codeinjector/) to run my code, you could use the same code with different initialization settings for certain websites you usually visit. This way you can better shape your VIM like experience while browsing on any website.
