@@ -1,5 +1,6 @@
 <h1>clawjs</h1>
-VIM-like browser extension.
+<h3>VIM-like browser extension.</h3>
+
 Inspired by [Tridactyl](https://github.com/tridactyl/tridactyl/), but actually works in every browser you throw it at.
 
 ![image](https://github.com/Nuboctane/clawjs/assets/72999487/1250d71e-c176-4a8b-b76d-515f95b7801a)
