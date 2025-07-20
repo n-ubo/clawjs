@@ -39,6 +39,7 @@ this way you can narrow down quickly which element you want to interact with. On
 - Elements that can be scrolled within themselves could show key labels not directly visible to the client on activation.
 
 <h2>issues with workarounds</h2>
+
 - Event listeners of the page you're visiting might intervene with this script when/before activated.
 
 i have not yet found a way to optimally avoid keyboard keys the DOM is already using, for now you can change your initialize settings on the bottom of claw.js
