@@ -26,9 +26,9 @@ You can always also just paste this code in your browsers console for a one-time
 - The script makes use of less cryptic key tags when activated, read more about this below on how to use them.
   
 <h2>how to use</h2>
-Press G and H simultaneously to activate the frames on top of interactable elements.
+Press SHIFT and ALT simultaneously to activate the frames on top of interactable elements.
 
-Press G and H simultaneously again to disable the frames.
+Press SHIFT and ALT  simultaneously again to disable the frames.
 
 After enabling the frames, key tags are shown in the corner of each frame indicating which key you will have to press to interact with this element.
 When the key you want is pressed, all frames that did not have this key will disappear and the elements that remain will show new keys.
@@ -36,7 +36,20 @@ this way you can narrow down quickly which element you want to interact with. On
 
 <h2>known issues/TODO</h2>
 
-- G and H key combo could get triggered while interacting with any input elements inside the Document.
 - Elements that can be scrolled within themselves could show key labels not directly visible to the client on activation.
+
+<h2>issues with workarounds</h2>
 - Event listeners of the page you're visiting might intervene with this script when/before activated.
+
+i have not yet found a way to optimally avoid keyboard keys the DOM is already using, for now you can change your initialize settings on the bottom of claw.js
+
+example:
+
+const claw = new ClawOverlay({
+    keys: "QWERTYUIOPASDFGHJKLZXCVBNM".split(''), // available keys to use when rendering boxes
+    refreshTimeout: 500,
+    toggleKeys: ['SHIFT', 'ALT'] // press SHIFT + ALT to toggle, can also use normal keyboard keys used in 'keys:'
+});
+
+
 
