@@ -89,4 +89,4 @@ this way there will only be boxes labeled with A, S and D. Allowing you to narro
 
 <h2>TIPS</h2>
 
-When using tools [Code Injector](https://addons.mozilla.org/en-US/firefox/addon/codeinjector/) to run my code, you could use the same code with different initialization settings for certain websites you usually visit. This way you can better shape your VIM-like experience while browsing on any website.
+When using tools like [Code Injector](https://addons.mozilla.org/en-US/firefox/addon/codeinjector/) to run my code, you could use the same code with different initialization settings for certain websites you usually visit. This way you can better shape your VIM-like experience while browsing on any website.
