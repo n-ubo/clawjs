@@ -1,7 +1,6 @@
 <h1>clawjs</h1>
 
-A slightly adapted version of [Tridactyl](https://github.com/tridactyl/tridactyl/)
-but is easily injectable in any browser and is open source.
+Inspired by [Tridactyl](https://github.com/tridactyl/tridactyl/), but actually works in every browser you throw it at.
 
 ![image](https://github.com/Nuboctane/clawjs/assets/72999487/1250d71e-c176-4a8b-b76d-515f95b7801a)
 
