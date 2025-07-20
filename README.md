@@ -45,11 +45,12 @@ i have not yet found a way to optimally avoid keyboard keys the DOM is already u
 
 example:
 
+```js
 const claw = new ClawOverlay({
-    keys: "QWERTYUIOPASDFGHJKLZXCVBNM".split(''), // available keys to use when rendering boxes
-    refreshTimeout: 500,
-    toggleKeys: ['SHIFT', 'ALT'] // press SHIFT + ALT to toggle, can also use normal keyboard keys used in 'keys:'
+    keys: "QWERTYUIOPASDFGHJKLZXCVBNM".split(''), // Available keys for overlay selection
+    refreshTimeout: 500, // Milliseconds between overlay refreshes
+    toggleKeys: ['SHIFT', 'ALT'] // Press SHIFT + ALT to toggle overlays
 });
-
+```
 
 
