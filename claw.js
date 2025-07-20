@@ -4,6 +4,7 @@
 
 class ClawOverlay {
     constructor(config = {}) {
+        //want to edit the keys used for the overlay? edit the initialization of the class on the bottom of this file.
         this.defaultKeys = config.keys || "QWERTYUIOPLKJHGFDSAZXCVBNM1234567890".split('');
         this.timeout = config.refreshTimeout || 500;
         this.toggleKeys = config.toggleKeys || ['G', 'H'];
