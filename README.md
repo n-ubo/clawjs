@@ -11,6 +11,7 @@ you can make a browser extension locally and just use this code and unpack it in
 If you don't know how to make a browser extension I recommend installing one of the following existing browser extensions to help you use my code.
 Such as:
 
+[Code Injector](https://addons.mozilla.org/en-US/firefox/addon/codeinjector/),
 [Tampermonkey](https://www.tampermonkey.net/),
 [(chrome) Pagemanipulator](https://chromewebstore.google.com/detail/page-manipulator/mdhellggnoabbnnchkeniomkpghbekko?hl=en/)
 
