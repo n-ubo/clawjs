@@ -261,5 +261,5 @@ class ClawOverlay {
 const claw = new ClawOverlay({
     keys: "QWERTYUIOPASDFGHJKLZXCVBNM".split(''), // Available keys for overlay selection
     refreshTimeout: 500, // Milliseconds between overlay refreshes
-    toggleKeys: ['SHIFT', 'ALT'] // Press SHIFT + ALT to toggle overlays
+    toggleKeys: ['CONTROL', 'ALT'] // Press CONTROL + ALT to toggle overlays
 });
