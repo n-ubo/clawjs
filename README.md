@@ -71,7 +71,7 @@ you can also use multiple or less toggle keys in order to trigger the overlay
 or
 
 ```js
-    toggleKeys: ['F']  // Press just F to toggle overlays
+    toggleKeys: ['F'] // Press just F to toggle overlays
 ```
 
 want to use even less keys when navigating through the overlay?
